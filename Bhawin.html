@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special Page for You</title>
+    <style>
+        body {
+            background-color: #FFC0CB; /* Light Pink */
+            color: #D6006B; /* Darker Pink */
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 3em;
+            opacity: 0;
+            animation: fadeIn 3s forwards;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        #revealButton, #nextButton {
+            background-color: #D6006B;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.2em;
+            margin-top: 20px;
+        }
+        #message, #message2, #finalMessage {
+            font-size: 1.5em;
+            margin-top: 20px;
+            display: inline-block;
+            white-space: pre-wrap;
+            overflow: hidden;
+            text-align: center;
+            opacity: 0;
+            animation: fadeInText 3s forwards;
+        }
+        @keyframes fadeInText {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        #revealButton:hover, #nextButton:hover {
+            background-color: #FF69B4;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Customizable Title -->
+    <h1>To My Beautiful Ananya!</h1>
+    
+    <!-- Button to Reveal First Message -->
+    <button id="revealButton" onclick="revealMessage('message', firstMessage, 'nextButton')">Click to reveal your surprise!</button>
+    
+    <!-- First Hidden Message -->
+    <p id="message"></p>
+    
+    <!-- Button to Reveal Second Message -->
+    <button id="nextButton" onclick="revealMessage('message2', secondMessage, null)" style="display:none;">Click for the next message!</button>
+    
+    <!-- Second Hidden Message -->
+    <p id="message2"></p>
+
+    <!-- Final Hidden Message -->
+    <p id="finalMessage" style="display:none;"></p>
+
+    <script>
+        const firstMessage = "Ananya, you are my life, my literal everything. I wanna spend this life with you, getting to know the wonders of life and joy. For sorrow, you're mine; for happiness, you are mine. You are an oasis in my desert. I can't describe enough how much you matter to me and how much you changed my life. I now have an anchor to be bound to, a person to which I can say I belong to.";
+        
+        const secondMessage = "You are my greatest blessing. Nothing is better when I'm not with you. Being with you is the best... like absolute best. I just forget my every worry, my every sorrow. You bring the light to my world. I just wanna be yours. For Bhawin is nothing without his Ananya.\n\nBade ache lagte hein ye dharti, ye nadiyan, ye raina... aur tum.\n\nWith love,\nBhawin to his beautiful princess.";
+        
+        const finalMessage = "Ab insta par aaiye, aapka intezaar kar rha hoon...hehe.";
+
+        function revealMessage(elementId, text, nextButtonId) {
+            let element = document.getElementById(elementId);
+            element.innerHTML = text;
+            element.style.opacity = "0"; // Reset opacity for fade-in effect
+            element.style.animation = "fadeInText 3s forwards"; // Apply fade-in effect
+            if (nextButtonId) {
+                document.getElementById(nextButtonId).style.display = "inline-block";
+            } else {
+                setTimeout(showFinalMessage, 3000); // Show the final message after 3 seconds
+            }
+        }
+
+        function showFinalMessage() {
+            let finalElement = document.getElementById("finalMessage");
+            finalElement.innerHTML = finalMessage;
+            finalElement.style.display = "inline-block";
+            finalElement.style.opacity = "0"; // Reset opacity for fade-in effect
+            finalElement.style.animation = "fadeInText 3s forwards"; // Apply fade-in effect
+        }
+    </script>
+</body>
+</html>
